@@ -17,4 +17,14 @@ export class ClientsComponent {
       this.clients = clients;
     });
   }
+
+  getTotalBalance(){
+    let totalBalance: number = 0;
+    if(this.clients) {
+      this.clients.forEach(client => {
+        totalBalance += Number(client?.balance)
+      })
+    }
+    return totalBalance
+  }
 }

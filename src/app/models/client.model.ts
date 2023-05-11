@@ -3,5 +3,5 @@ export interface Client {
   name?: string;
   lastname?: string;
   email?: string;
-  balance?: string;
+  balance?: number;
 }

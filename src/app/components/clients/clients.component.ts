@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Client } from 'src/app/models/client.model';
 import { ClientService } from 'src/app/services/client.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -17,6 +17,9 @@ export class ClientsComponent {
     email: '',
     balance: 0,
   };
+
+  @ViewChild('formClient', { static: false }) formClient: NgForm;
+  @ViewChild('closeModal', { static: false }) closeModalButton: Element;
 
   constructor(
     private clientsService: ClientService,
@@ -46,7 +49,13 @@ export class ClientsComponent {
         timeout: 4000,
       });
     } else {
-      //data
+      this.clientsService.addClient(formClient.value);
+      this.formClient.resetForm();
+      this.closeModal();
     }
+  }
+
+  private closeModal() {
+    this.closeModalButton;
   }
 }
